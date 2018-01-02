@@ -24,8 +24,6 @@ RUN curl -L https://github.com/fg2it/phantomjs-on-raspberry/releases/download/v$
     && chmod +x /usr/bin/phantomjs \
     && /usr/bin/phantomjs -v
 
-# Uninstall enum34 because some dependencies install it but breaks Python 3.4+.
-# See PR #8103 for more info.
 RUN pip3 install --no-cache-dir -r requirements_all.txt && \
     pip3 install --no-cache-dir mysqlclient psycopg2 uvloop cchardet cython
 
