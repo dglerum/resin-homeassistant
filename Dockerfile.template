@@ -19,6 +19,7 @@ RUN virtualization/Docker/setup_docker_prereqs
 
 # manually install armv6 phantomjs
 RUN curl https://github.com/fg2it/phantomjs-on-raspberry/releases/download/v2.1.1-wheezy-jessie-armv6/phantomjs -o /usr/bin/phantomjs \
+    && chmod +x /usr/bin/phantomjs /
     && /usr/bin/phantomjs -v
 
 # Uninstall enum34 because some dependencies install it but breaks Python 3.4+.
