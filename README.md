@@ -25,4 +25,4 @@ _tbd_
 
 ## Acknowledgments
 
-* https://github.com/lroguet/rpi-home-assistant
+* https://github.com/home-assistant/home-assistant
