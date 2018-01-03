@@ -25,4 +25,6 @@ _tbd_
 
 ## Acknowledgments
 
+* https://github.com/home-assistant/hassio
+* https://github.com/home-assistant/hassio-build
 * https://github.com/home-assistant/home-assistant
