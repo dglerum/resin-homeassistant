@@ -1,13 +1,14 @@
-FROM homeassistant/raspberrypi3-homeassistant
+FROM homeassistant/raspberrypi3-homeassistant:latest
 
 # install and configure openssh
+# DO NOT EXPOSE SSHD PORT OUTSIDE YOUR FIREWALL WITH ROOT LOGIN ALLOWED
 RUN apk add --no-cache \
     openssh \
     && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
     && echo "root:alpine" | chpasswd
     
 # install rsub for remote ide
-RUN curl "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
+RUN curl -L "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
 	&& chmod a+x /usr/local/bin/rsub
 
 # CMD [ "python3", "-m", "homeassistant", "--config", "/data" ]
