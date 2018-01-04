@@ -1,12 +1,20 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# install and configure openssh
+# THIS IS SUPER INSECURE
 # DO NOT EXPOSE SSHD PORT OUTSIDE YOUR FIREWALL WITH ROOT LOGIN ALLOWED
+
+# install and configure openssh
+# PermitRootLogin yes
+# PubkeyAuthentication yes
+# PasswordAuthentication no
 RUN apk add --no-cache \
     openssh \
-    && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
-    && echo "root:alpine" | chpasswd
-    
+    && sed -i \
+    -e s/#PermitRootLogin.*/PermitRootLogin\ yes/ \
+    -e s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ \
+    -e s/#PasswordAuthentication.*/PasswordAuthentication\ no/ \
+    /etc/ssh/sshd_config
+
 # install rsub for remote ide
 RUN curl -L "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
 	&& chmod a+x /usr/local/bin/rsub
