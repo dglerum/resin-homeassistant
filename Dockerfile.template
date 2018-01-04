@@ -1,3 +1,8 @@
 FROM homeassistant/raspberrypi3-homeassistant
 
+RUN apk add --no-cache \
+    openssh
+    
+RUN rc-update add sshd
+
 CMD [ "python3", "-m", "homeassistant", "--config", "/data" ]
