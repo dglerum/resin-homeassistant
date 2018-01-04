@@ -1,8 +1,5 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# THIS IS SUPER INSECURE
-# DO NOT EXPOSE SSHD PORT OUTSIDE YOUR FIREWALL WITH ROOT LOGIN ALLOWED
-
 # install and configure openssh
 # PermitRootLogin yes
 # PubkeyAuthentication yes
