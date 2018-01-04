@@ -1,15 +1,17 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# install and configure openssh
+# install and configure openssh:
 # PermitRootLogin yes
 # PubkeyAuthentication yes
 # PasswordAuthentication no
+# AuthorizedKeysFile /data/authorized_keys
 RUN apk add --no-cache \
     openssh \
     && sed -i \
-    -e s/#PermitRootLogin.*/PermitRootLogin\ yes/ \
-    -e s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ \
-    -e s/#PasswordAuthentication.*/PasswordAuthentication\ no/ \
+    -e s|#PermitRootLogin.*|PermitRootLogin\ yes| \
+    -e s|#PubkeyAuthentication.*|PubkeyAuthentication\ yes| \
+    -e s|#PasswordAuthentication.*|PasswordAuthentication\ no| \
+    -e s|AuthorizedKeysFile.*|AuthorizedKeysFile\ /data/authorized_keys| \
     /etc/ssh/sshd_config
 
 # install rsub for remote ide
