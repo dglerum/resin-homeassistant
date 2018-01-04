@@ -1,10 +1,16 @@
 FROM homeassistant/raspberrypi3-homeassistant
 
+# install and configure openssh
 RUN apk add --no-cache \
-    openssh
+    openssh \
+    && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
+    && echo "root:alpine" | chpasswd
     
-RUN sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
-    && echo "root:root" | chpasswd
+# install rsub for remote ide
+RUN curl "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
+	&& chmod a+x /usr/local/bin/rsub
 
 # CMD [ "python3", "-m", "homeassistant", "--config", "/data" ]
+
+# start sshd before homeassistant
 CMD [ "sh", "-c", "ssh-keygen -A; /usr/sbin/sshd; python3 -m homeassistant --config /data" ]
