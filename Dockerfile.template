@@ -3,6 +3,8 @@ FROM homeassistant/raspberrypi3-homeassistant
 RUN apk add --no-cache \
     openssh
     
-RUN rc-update add sshd
+RUN sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
+    && echo "root:root" | chpasswd
 
-CMD [ "python3", "-m", "homeassistant", "--config", "/data" ]
+# CMD [ "python3", "-m", "homeassistant", "--config", "/data" ]
+CMD [ "sh", "-c", "ssh-keygen -A; /usr/sbin/sshd; python3 -m homeassistant --config /data" ]
