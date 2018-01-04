@@ -10,7 +10,7 @@ RUN apk add --no-cache \
     && sed -i -e s/#PermitRootLogin.*/PermitRootLogin\ yes/ \
     -e s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ \
     -e s/#PasswordAuthentication.*/PasswordAuthentication\ no/ \
-    -e s/AuthorizedKeysFile.*/AuthorizedKeysFile\ \/data\/authorized_keys/ \
+    -e s/AuthorizedKeysFile.*/AuthorizedKeysFile\ /data/authorized_keys/ \
     /etc/ssh/sshd_config
 
 # install rsub for remote ide
