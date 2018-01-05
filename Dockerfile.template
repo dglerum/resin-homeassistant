@@ -20,7 +20,7 @@ RUN sed -i \
     /etc/ssh/sshd_config
 
 # install rsub for remote ide
-RUN curl -L "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
+RUN curl -sL "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
 	&& chmod a+x /usr/local/bin/rsub
 
 WORKDIR /usr/src/app

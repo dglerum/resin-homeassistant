@@ -6,7 +6,7 @@ readonly ssh_config_dir="/data/.ssh"
 mkdir -p "${ssh_config_dir}" 2>/dev/null || true
 
 # set permissions on ssh config dir
-chmod 700 "${ssh_config_dir}"
+chmod -R 700 "${ssh_config_dir}"
 
 # For each of the key types (rsa, dsa, ecdsa, and ed25519) for which
 # host keys do not exist, generate the host keys with the default
@@ -15,11 +15,11 @@ chmod 700 "${ssh_config_dir}"
 /usr/bin/ssh-keygen -A
 
 # start sshd if we don't use the init system
-if [ "${INITSYSTEM}" != "on" ]
-then
+# if [ "${INITSYSTEM}" != "on" ]
+# then
 	echo "manually starting sshd..."
 	/usr/sbin/sshd -p 22 &
-fi
+# fi
 
 echo "starting home assistant..."
 /usr/bin/python3 -m homeassistant --config /data
