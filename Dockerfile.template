@@ -1,25 +1,30 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# install and configure openssh:
-# PermitRootLogin yes
-# PubkeyAuthentication yes
-# PasswordAuthentication no
-# AuthorizedKeysFile /data/authorized_keys
+ENV INITSYSTEM on
+
+# install openssh and rsync for rsnapshot backups
 RUN apk add --no-cache \
     openssh \
-    rsync \
-    && sed -i \
+    rsync
+
+# configure inbound sshd:
+# + PermitRootLogin yes
+# + PubkeyAuthentication yes
+# + PasswordAuthentication no
+# + AuthorizedKeysFile /data/.ssh/authorized_keys
+RUN sed -i \
     -e 's|#PermitRootLogin.*|PermitRootLogin\ yes|' \
     -e 's|#PubkeyAuthentication.*|PubkeyAuthentication\ yes|' \
     -e 's|#PasswordAuthentication.*|PasswordAuthentication\ no|' \
-    -e 's|AuthorizedKeysFile.*|AuthorizedKeysFile\ /data/authorized_keys|' \
+    -e 's|AuthorizedKeysFile.*|AuthorizedKeysFile\ /data/.ssh/authorized_keys|' \
     /etc/ssh/sshd_config
 
 # install rsub for remote ide
 RUN curl -L "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
 	&& chmod a+x /usr/local/bin/rsub
 
-# CMD [ "python3", "-m", "homeassistant", "--config", "/data" ]
+WORKDIR /usr/src/app
 
-# start sshd before homeassistant
-CMD [ "sh", "-c", "ssh-keygen -A; /usr/sbin/sshd; python3 -m homeassistant --config /data" ]
+COPY /app ./
+
+CMD ["/bin/bash", "start.sh"]
