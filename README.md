@@ -16,7 +16,7 @@ _tbd_
 * https://home-assistant.io/docs/
 
 For ssh access to the container, use the resin.io app terminal to add your
-public ssh key to `/data/authorized_keys`.
+public ssh key to `/data/.ssh/authorized_keys`.
 
 ## Author
 
