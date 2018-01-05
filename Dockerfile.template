@@ -7,6 +7,7 @@ FROM homeassistant/raspberrypi3-homeassistant:latest
 # AuthorizedKeysFile /data/authorized_keys
 RUN apk add --no-cache \
     openssh \
+    rsync \
     && sed -i \
     -e 's|#PermitRootLogin.*|PermitRootLogin\ yes|' \
     -e 's|#PubkeyAuthentication.*|PubkeyAuthentication\ yes|' \
