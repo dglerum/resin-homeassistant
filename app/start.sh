@@ -26,12 +26,12 @@ echo "starting watchdog..."
 stopped_seconds=0
 while /bin/true
 do
-    sleep 60
+    sleep 30
     if ps aux | grep homeassistant | grep -q -v grep
     then
         stopped_seconds=0
     else
-        stopped_seconds=$((stopped_seconds + 60))
+        stopped_seconds=$((stopped_seconds + 30))
         echo "homeassistant process stopped for ${stopped_seconds} seconds..."
     fi
     if [ ${stopped_seconds} -ge ${stopped_timeout} ]
