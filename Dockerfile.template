@@ -1,6 +1,9 @@
 FROM resin/%%RESIN_MACHINE_NAME%%-python:3.6
 
-# enable openrc
+# based on:
+# https://github.com/home-assistant/home-assistant/blob/dev/Dockerfile
+
+# enable initsystem
 ENV INITSYSTEM on
 
 # Uncomment any of the following lines to disable the installation.
@@ -12,9 +15,6 @@ ENV INSTALL_PHANTOMJS no
 #ENV INSTALL_SSOCR no
 
 ENV PHANTOMJS_VERSION="2.1.1"
-
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
 
 # clone official docker repo
 RUN git clone https://github.com/home-assistant/home-assistant.git .
@@ -30,4 +30,30 @@ RUN curl -sL https://github.com/fg2it/phantomjs-on-raspberry/releases/download/v
 RUN pip3 install --no-cache-dir -r requirements_all.txt && \
     pip3 install --no-cache-dir mysqlclient psycopg2 uvloop cchardet cython
 
-CMD [ "python", "-m", "homeassistant", "--config", "/data" ]
+# install openssh and rsync for rsnapshot backups
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+	rsync \
+	openssh \
+	&& apt-get clean && rm -rf /var/lib/apt/lists/*
+	
+# configure inbound sshd:
+# + PermitRootLogin yes
+# + PubkeyAuthentication yes
+# + PasswordAuthentication no
+# + AuthorizedKeysFile /data/.ssh/authorized_keys
+RUN sed -i \
+    -e 's|#PermitRootLogin.*|PermitRootLogin\ yes|' \
+    -e 's|#PubkeyAuthentication.*|PubkeyAuthentication\ yes|' \
+    -e 's|#PasswordAuthentication.*|PasswordAuthentication\ no|' \
+    -e 's|AuthorizedKeysFile.*|AuthorizedKeysFile\ /data/.ssh/authorized_keys|' \
+    /etc/ssh/sshd_config
+
+# install rsub for remote ide
+RUN curl -sL "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
+	&& chmod a+x /usr/local/bin/rsub
+
+WORKDIR /usr/src/app
+
+COPY /app ./
+
+CMD ["/bin/bash", "start.sh"]

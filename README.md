@@ -1,6 +1,11 @@
 # resin-homeassistant
 
-resin.io home-assistant application
+resin.io home-assistant.io application
+
+features added:
+* ssh access
+* rsnapshot backups
+* rsub (rmate) remote ide
 
 ## Getting Started
 
