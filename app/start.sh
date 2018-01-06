@@ -37,6 +37,6 @@ do
     if [ ${stopped_seconds} -ge ${stopped_timeout} ]
     then
         echo "stopping container..."
-        exit -1
+        exit 1
     fi
 done
