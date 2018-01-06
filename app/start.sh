@@ -32,7 +32,7 @@ do
         stopped_seconds=0
     else
         stopped_seconds=$((stopped_seconds + 30))
-        echo "homeassistant process stopped for ${stopped_seconds} seconds..."
+        echo "homeassistant process not found for ${stopped_seconds} seconds..."
     fi
     if [ ${stopped_seconds} -ge ${stopped_timeout} ]
     then
