@@ -1,6 +1,6 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-ENV INITSYSTEM on
+# ENV INITSYSTEM on
 
 # install openssh and rsync for rsnapshot backups
 RUN apk add --no-cache \

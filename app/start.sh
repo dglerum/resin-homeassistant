@@ -19,4 +19,4 @@ echo "starting ssh server..."
 /usr/sbin/sshd -p 22 &
 
 echo "starting home assistant..."
-/usr/bin/python3 -m homeassistant --config /data &
+/usr/bin/python3 -m homeassistant --config /data
