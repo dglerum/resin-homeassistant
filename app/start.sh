@@ -2,6 +2,7 @@
 
 # make ssh config dir persist
 readonly ssh_config_dir="/data/.ssh"
+readonly stopped_timeout="300"
 
 # create ssh config dir if it does not exist
 mkdir -p "${ssh_config_dir}" 2>/dev/null || true
@@ -16,7 +17,26 @@ chmod -R 700 "${ssh_config_dir}"
 /usr/bin/ssh-keygen -A
 
 echo "starting ssh server..."
-/usr/sbin/sshd -p 22
+/usr/sbin/sshd -p 22 &
 
 echo "starting home assistant..."
-/usr/bin/python -m homeassistant --config /data
+/usr/bin/python3 -m homeassistant --config /data &
+
+echo "starting watchdog..."
+stopped_seconds=0
+while /bin/true
+do
+    sleep 60
+    if ps aux | grep homeassistant | grep -q -v grep
+    then
+        stopped_seconds=0
+    else
+        stopped_seconds=$((stopped_seconds + 60))
+        echo "homeassistant process stopped for ${stopped_seconds} seconds..."
+    fi
+    if [ ${stopped_seconds} -ge ${stopped_timeout} ]
+    then
+        echo "stopping container..."
+        exit -1
+    fi
+done
