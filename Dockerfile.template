@@ -6,6 +6,8 @@ FROM resin/%%RESIN_MACHINE_NAME%%-python:3.6
 # enable initsystem
 ENV INITSYSTEM on
 
+WORKDIR /usr/src/app
+
 # Uncomment any of the following lines to disable the installation.
 #ENV INSTALL_TELLSTICK no
 #ENV INSTALL_OPENALPR no
@@ -51,9 +53,7 @@ RUN sed -i \
 # install rsub for remote ide
 RUN curl -sL "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
 	&& chmod a+x /usr/local/bin/rsub
-
-WORKDIR /usr/src/app
-
+	
 COPY /app ./
 
 CMD ["/bin/bash", "start.sh"]
