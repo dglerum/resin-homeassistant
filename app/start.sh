@@ -15,8 +15,8 @@ chmod -R 700 "${ssh_config_dir}"
 # type, and default comment
 /usr/bin/ssh-keygen -A
 
-echo "starting ssh server..."
-/usr/sbin/sshd -p 22 &
-
 echo "starting home assistant..."
-/usr/bin/python3 -m homeassistant --config /data
+/usr/bin/python3 -m homeassistant --config /data &
+
+echo "starting ssh server..."
+/usr/sbin/sshd -p 22
