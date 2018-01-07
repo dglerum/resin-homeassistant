@@ -1,6 +1,6 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# set up default samba share:
+# set up a samba share using this repo as a guide:
 # https://github.com/pwntr/samba-alpine-docker
 
 # install samba and supervisord
