@@ -12,10 +12,10 @@ RUN apk add --no-cache \
 COPY *.conf /config/
 
 # add a non-root user and group called "hass" with no password, no home dir, no shell, and gid/uid set to 1000
-RUN addgroup -g 1000 hass \
-    && adduser -D -H -G hass -s /bin/false -u 1000 hass
+#RUN addgroup -g 1000 hass \
+#    && adduser -D -H -G hass -s /bin/false -u 1000 hass
 
 # create a samba user matching our user from above with a very simple password ("alpine")
-RUN echo -e "alpine\nalpine" | smbpasswd -a -s -c /config/smb.conf hass
+RUN echo -e "alpine\nalpine" | smbpasswd -a -s -c /config/smb.conf root
 
 CMD ["supervisord", "-c", "/config/supervisord.conf"]
