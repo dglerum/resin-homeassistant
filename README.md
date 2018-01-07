@@ -2,10 +2,7 @@
 
 resin.io home-assistant.io application
 
-features added:
-* ssh access
-* rsnapshot backups
-* rsub (rmate) remote ide
+includes a samba share hosting the config dir
 
 ## Getting Started
 
@@ -20,8 +17,9 @@ _tbd_
 
 * https://home-assistant.io/docs/
 
-For ssh access to the container, use the resin.io app terminal to add your
-public ssh key to `/data/.ssh/authorized_keys`.
+For samba access to the data dir go to `//<device-ip>/data`.
+
+The default credentials are `hass:alpine`.
 
 ## Author
 
@@ -36,3 +34,4 @@ _tbd_
 * https://github.com/home-assistant/hassio
 * https://github.com/home-assistant/hassio-build
 * https://github.com/home-assistant/home-assistant
+* https://github.com/pwntr/samba-alpine-docker

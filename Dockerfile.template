@@ -1,24 +1,21 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# install openssh and rsync for rsnapshot backups
+# set up default samba share:
+# https://github.com/pwntr/samba-alpine-docker
+
+# install samba and supervisord
 RUN apk add --no-cache \
-    openssh \
-    rsync
+    samba \
+    samba-common-tools \
+    supervisor
 
-# configure inbound sshd
-RUN sed -i \
-    -e 's|#PermitRootLogin.*|PermitRootLogin\ yes|' \
-    -e 's|#PubkeyAuthentication.*|PubkeyAuthentication\ yes|' \
-    -e 's|#PasswordAuthentication.*|PasswordAuthentication\ no|' \
-    -e 's|AuthorizedKeysFile.*|AuthorizedKeysFile\ /data/.ssh/authorized_keys|' \
-    /etc/ssh/sshd_config
+COPY *.conf /config/
 
-# install rsub (rmate) for remote ide
-RUN curl -sL "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
-	&& chmod +x /usr/local/bin/rsub
+# add a non-root user and group called "hass" with no password, no home dir, no shell, and gid/uid set to 1000
+RUN addgroup -g 1000 hass \
+    && adduser -D -H -G hass -s /bin/false -u 1000 hass
 
-WORKDIR /usr/src/app
+# create a samba user matching our user from above with a very simple password ("alpine")
+RUN echo -e "alpine\nalpine" | smbpasswd -a -s -c /config/smb.conf hass
 
-COPY /app ./
-
-CMD ["/bin/bash", "start.sh"]
+CMD ["supervisord", "-c", "/config/supervisord.conf"]
