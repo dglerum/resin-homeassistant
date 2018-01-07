@@ -19,7 +19,7 @@ _tbd_
 
 For samba access to the data dir go to `//<device-ip>/data`.
 
-The default credentials are `hass:alpine`.
+The default credentials are `root:alpine`.
 
 ## Author
 
