@@ -1,8 +1,6 @@
 # resin-homeassistant
 
-resin.io home-assistant.io application
-
-includes a samba share hosting the config dir
+[resin.io](https://resin.io/) home-assistant.io application
 
 ## Getting Started
 
@@ -16,10 +14,6 @@ _tbd_
 ## Usage
 
 * https://home-assistant.io/docs/
-
-For samba access to the data dir go to `//<device-ip>/data`.
-
-The default credentials are `root:alpine`.
 
 ## Author
 
