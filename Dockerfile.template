@@ -15,4 +15,4 @@ COPY /root /
 # set a simple samba password for the root user
 RUN /bin/echo -e "resin\nresin" | smbpasswd -a -s -c /config/smb.conf root
 
-CMD ["supervisord", "-c", "/config/supervisord.conf" ]
+CMD ["/bin/bash", "/usr/local/bin/start.sh"]
