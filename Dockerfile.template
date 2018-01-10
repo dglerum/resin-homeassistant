@@ -19,4 +19,4 @@ ENV SUPERVISOR_CONFIG   /config/supervisord.conf
 # set a simple samba password for the root user
 RUN /bin/echo -e "resin\nresin" | smbpasswd -a -s -c ${SAMBA_CONFIG} root
 
-CMD ["supervisord", "-c", ${SUPERVISOR_CONFIG} ]
+CMD ["supervisord", "-c", "${SUPERVISOR_CONFIG}" ]
