@@ -1,8 +1,5 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# set up a samba share using this repo as a guide:
-# https://github.com/pwntr/samba-alpine-docker
-
 # install samba and supervisord
 RUN apk add --no-cache \
     samba \
@@ -13,6 +10,6 @@ RUN apk add --no-cache \
 COPY /root /
 
 # set a simple samba password for the root user
-RUN /bin/echo -e "resin\nresin" | smbpasswd -a -s -c /config/smb.conf root
+RUN /bin/echo -e "resin\nresin" | smbpasswd -a -s -c "/config/smb.conf" root
 
 CMD ["/bin/bash", "/usr/local/bin/start.sh"]

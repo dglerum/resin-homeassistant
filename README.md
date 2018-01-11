@@ -1,6 +1,6 @@
 # resin-homeassistant
 
-[resin.io](https://resin.io/) home-assistant.io application
+[resin.io](https://resin.io/) [home-assistant.io](https://home-assistant.io/) application
 
 ## Getting Started
 
