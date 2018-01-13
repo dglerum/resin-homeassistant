@@ -12,5 +12,8 @@
 chown -R root:root "/data/.ssh"
 chmod -R 700 "/data/.ssh"
 
+# generate host keys
+/usr/bin/ssh-keygen -A
+
 # start services
 supervisord -c "/etc/supervisord.conf"
