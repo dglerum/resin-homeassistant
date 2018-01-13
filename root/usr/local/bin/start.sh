@@ -13,4 +13,4 @@ chown -R root:root "/data/.ssh"
 chmod -R 700 "/data/.ssh"
 
 # start services
-supervisord -c "/config/supervisord.conf"
+supervisord -c "/etc/supervisord.conf"
