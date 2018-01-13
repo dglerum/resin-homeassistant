@@ -1,7 +1,8 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# install sshd, rsync, samba, supervisord
+# install curl, ssh, rsync, samba, supervisord
 RUN apk add --no-cache \
+    curl \
     openssh \
     rsync \
     samba \
