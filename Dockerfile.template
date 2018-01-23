@@ -1,14 +1,13 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# install curl, ssh, rsync, samba, supervisord
+# install utils
 RUN apk add --no-cache \
     curl \
     openssh \
-    rsync \
     samba \
     samba-common-tools \
     supervisor
-    
+
 # install root filesystem overlay
 COPY /root /
 

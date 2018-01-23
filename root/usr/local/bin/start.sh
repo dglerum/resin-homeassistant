@@ -1,12 +1,16 @@
 #!/bin/bash
 	
 # create ssh dir if it does not exist
-[ -d "/data/.ssh" ] ||
+if [ ! -d "/data/.ssh" ]
+then
 	mkdir -p "/data/.ssh"
+fi
 
 # touch authorized_keys if it does not exist
-[ -f "/data/.ssh/authorized_keys" ] ||
+if [ ! -f "/data/.ssh/authorized_keys" ]
+then
 	touch "/data/.ssh/authorized_keys"
+fi
 
 # set permissions on ssh dir
 chown -R root:root "/data/.ssh"
