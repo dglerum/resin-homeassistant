@@ -5,8 +5,8 @@ RUN apk add --no-cache \
     curl \
     openssh \
 #    rsync \
-#    samba \
-#    samba-common-tools \
+    samba \
+    samba-common-tools \
     supervisor
 
 # install root filesystem overlay
