@@ -4,6 +4,7 @@ FROM homeassistant/raspberrypi3-homeassistant:latest
 RUN apk add --no-cache \
     curl \
     openssh \
+    python3 \
 #    rsync \
 #    samba \
 #    samba-common-tools \
