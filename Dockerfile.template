@@ -4,7 +4,6 @@ FROM homeassistant/raspberrypi3-homeassistant:latest
 RUN apk add --no-cache \
     curl \
     openssh \
-    python3 \
 #    rsync \
 #    samba \
 #    samba-common-tools \
@@ -20,4 +19,4 @@ COPY /root /
 # RUN curl -sL "https://raw.github.com/aurora/rmate/master/rmate" > "/usr/local/bin/rsub" \
 #    && chmod +x /usr/local/bin/rsub
 
-CMD ["/bin/bash", "/usr/local/bin/start.sh"]
+#CMD ["/bin/bash", "/usr/local/bin/start.sh"]
