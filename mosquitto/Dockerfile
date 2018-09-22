@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y mosquitto
 RUN adduser --system --disabled-password --disabled-login mosquitto
 
 COPY config /mosquitto/config
-VOLUME ["/data/mqtt/config", "/data/mqtt/data", "/data/mqtt/log"]
+VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 EXPOSE 1883 9001
-CMD /usr/sbin/mosquitto -c /data/mqtt/config/mosquitto.conf
+CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
