@@ -1,8 +1,8 @@
 version: "2"
 
 volumes:
-  homeassistant:
-  mosquitto:
+  homeassistant-data:
+  mosquitto-data:
 
 services:
 
@@ -16,7 +16,8 @@ services:
       - "139"
       - "445"
     volumes:
-      - 'homeassistant:/data'
+      - 'homeassistant-data:/data'
+
   #   environment:
   #     - VIRTUAL_HOST=homeassistant
   #     - VIRTUAL_PORT=8123
@@ -33,4 +34,4 @@ services:
       - "1883"
       - "9001"
     volumes:
-      - 'mosquitto:/data'
+      - 'mosquitto-data:/data'
