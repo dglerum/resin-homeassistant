@@ -1,9 +1,14 @@
 #!/bin/bash
-	
+
 # create ssh dir if it does not exist
 if [ ! -d "/data/.ssh" ]
 then
 	mkdir -p "/data/.ssh"
+fi
+
+if [ ! -d "/data/config" ]
+then
+	mkdir -p "/data/config"
 fi
 
 # touch authorized_keys if it does not exist
