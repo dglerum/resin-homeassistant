@@ -1,0 +1,21 @@
+version: "2"
+services:
+
+  homeassistant:
+    build: ./homeassistant
+    ports:
+      - "8123"
+      - "137"
+      - "138"
+      - "139"
+      - "445"
+
+  # nginx:
+  #   build: ./nginx
+  #   depends_on:
+  #     - homeassistant
+  #   ports:
+  #     - "80"
+
+volumes:
+  homeassistant:
