@@ -10,6 +10,9 @@ services:
       - "138"
       - "139"
       - "445"
+    environment:
+      - VIRTUAL_HOST=homeassistant
+      - VIRTUAL_PORT=8123
 
   nginx:
     build: ./nginx
