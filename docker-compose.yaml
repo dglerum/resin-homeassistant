@@ -22,6 +22,9 @@ services:
   #     - "80"
   mosquitto:
     build: ./mosquitto
-
+    expose:
+      - "1883"
+      - "9001"
+      
 volumes:
   homeassistant:

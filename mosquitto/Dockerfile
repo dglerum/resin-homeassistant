@@ -10,12 +10,9 @@ RUN apt-get update && apt-get install -y mosquitto
 
 RUN adduser --system --disabled-password --disabled-login mosquitto
 
-# install root filesystem overlay
+# install filesystem overlay
 COPY /root /
-
 COPY config /data/mqtt/config
 VOLUME ["/data/mqtt/config", "/data/mqtt/data", "/data/mqtt/log"]
-
-EXPOSE 1883 9001
 
 CMD ["/bin/bash", "/usr/local/bin/start.sh"]
