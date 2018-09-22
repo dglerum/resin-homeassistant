@@ -20,6 +20,8 @@ services:
   #     - homeassistant
   #   ports:
   #     - "80"
+  mosquitto:
+    build: ./mosquitto
 
 volumes:
   homeassistant:
