@@ -10,7 +10,16 @@ services:
       - "138"
       - "139"
       - "445"
-      - "8123:80"
+  #   environment:
+  #     - VIRTUAL_HOST=homeassistant
+  #     - VIRTUAL_PORT=8123
+  #
+  # nginx:
+  #   build: ./nginx
+  #   depends_on:
+  #     - homeassistant
+  #   ports:
+  #     - "80"
 
 volumes:
   homeassistant:
