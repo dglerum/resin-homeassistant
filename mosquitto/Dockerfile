@@ -14,4 +14,5 @@ COPY config /data/mqtt/config
 VOLUME ["/data/mqtt/config", "/data/mqtt/data", "/data/mqtt/log"]
 
 EXPOSE 1883 9001
-CMD /usr/sbin/mosquitto -c /data/mqtt/config/mosquitto.conf
+
+CMD ["/bin/bash", "/usr/local/bin/start.sh"]
