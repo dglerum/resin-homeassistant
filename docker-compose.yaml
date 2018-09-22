@@ -6,5 +6,12 @@ services:
     expose:
       - "8123"
 
+  nginx:
+    build: ./nginx
+    depends_on:
+      - homeassistant
+    ports:
+      - "80"
+
 volumes:
   homeassistant:
