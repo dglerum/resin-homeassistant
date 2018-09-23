@@ -1,0 +1,17 @@
+version: "2"
+
+volumes:
+  homeassistant-data:
+
+services:
+  homeassistant:
+    build: ./homeassistant
+    ports:
+      - "22"
+      - "8123"
+      - "137"
+      - "138"
+      - "139"
+      - "445"
+    volumes:
+      - 'homeassistant-data:/data'
