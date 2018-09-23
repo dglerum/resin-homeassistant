@@ -3,7 +3,7 @@
 # create ssh dir if it does not exist
 if [ ! -d "/data/.ssh" ]
 then
-	mkdir -p "/data/.ssh" && /usr/bin/ssh-keygen -A
+	mkdir -p "/data/.ssh"
 fi
 
 if [ ! -d "/data/config" ]
@@ -20,6 +20,9 @@ fi
 # set permissions on ssh dir
 chown -R root:root "/data/.ssh"
 chmod -R 700 "/data/.ssh"
+
+# generate host keys
+/usr/bin/ssh-keygen -A
 
 # start services
 supervisord -c "/etc/supervisord.conf"
