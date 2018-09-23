@@ -21,7 +21,7 @@ fi
 # touch authorized_keys if it does not exist
 if [ ! -f "/data/mqtt/log/mosquitto.log" ]
 then
-	touch "/data/mqtt/log/mosquitto.log"
+	touch "/data/mqtt/log/mosquitto.log" && chmod -R ugo+rw "/data/mqtt/log/mosquitto.log"
 fi
 
 /usr/sbin/mosquitto -c /data/mqtt/config/mosquitto.conf
