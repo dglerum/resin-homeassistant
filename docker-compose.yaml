@@ -17,8 +17,8 @@ services:
       - "445"
     volumes:
       - 'homeassistant-data:/data'
-    depends_on:
-      - mosquitto
+    # depends_on:
+    #   - mosquitto
 
   #   environment:
   #     - VIRTUAL_HOST=homeassistant
