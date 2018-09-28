@@ -9,8 +9,6 @@ RUN apk add --no-cache \
 #    rsync \
     samba \
     samba-common-tools \
-    nmap \
-    net-tools \
     supervisor
 
 # install root filesystem overlay
