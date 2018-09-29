@@ -6,12 +6,10 @@ ARG BUILD_VERSION
 
 LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
-RUN ARCH=armv6l \
-    esac && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y git && \
     git clone https://github.com/50ButtonsEach/fliclib-linux-hci /tmp/src && \
-    cp /tmp/src/bin/${ARCH}/flicd /usr/bin/flicd && \
+    cp /tmp/src/bin/armv6l/flicd /usr/bin/flicd && \
     chmod +x /usr/bin/flicd && \
     mkdir /config && \
     rm -rf /tmp/src && \
