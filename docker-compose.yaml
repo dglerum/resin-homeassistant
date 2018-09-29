@@ -7,6 +7,7 @@ services:
   homeassistant:
     build: ./homeassistant
     ports:
+    privileged: true
       - "22"
       - "8123"
       - "137"
