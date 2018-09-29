@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM resin/rpi-raspbian
 
 ARG BUILD_ARCH
 ARG BUILD_VERSION
@@ -23,7 +23,5 @@ RUN case $(arch) in \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /data
-VOLUME ["/data"]
-EXPOSE 5551
 ENTRYPOINT ["/usr/bin/flicd"]
 CMD ["-f", "/data/flic-db", "-s", "0.0.0.0", "-p", "5551"]
