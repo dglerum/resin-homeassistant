@@ -6,11 +6,7 @@ ARG BUILD_VERSION
 
 LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
-RUN case $(arch) in \
-        x86_64|amd64) export ARCH=x86_64 ;; \
-        i386) export ARCH=i386 ;; \
-        armv6l|armv7l|aarch64) export ARCH=armv6l ;; \
-    ARCH=armv6l \
+RUN ARCH=armv6l \
     esac && \
     apt-get update && \
     apt-get install -y git && \
