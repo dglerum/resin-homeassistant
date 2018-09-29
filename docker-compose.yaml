@@ -2,7 +2,7 @@ version: "2"
 
 volumes:
   homeassistant-data:
-  flicd-data:/data:
+  flicd-data:
 
 services:
   homeassistant:
