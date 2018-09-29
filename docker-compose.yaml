@@ -24,5 +24,6 @@ services:
     privileged: true
     expose:
       - "5551"
+    network_mode: host
     volumes:
       - 'flicd-data:/data'
