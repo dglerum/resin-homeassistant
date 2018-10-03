@@ -15,6 +15,7 @@ services:
       - "138"
       - "139"
       - "445"
+      - "51827"
     network_mode: host
     volumes:
       - 'homeassistant-data:/data'
