@@ -7,7 +7,7 @@ RUN apk add --no-cache \
     git \
     nano \
 #    rsync \
-    libavahi-compat-libdnssd-dev \
+#    libavahi-compat-libdnssd-dev \
     samba \
     samba-common-tools \
     supervisor
