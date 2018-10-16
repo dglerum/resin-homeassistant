@@ -24,5 +24,9 @@ chmod -R 700 "/data/.ssh"
 # generate host keys
 /usr/bin/ssh-keygen -A
 
+# set timezone
+cp /usr/share/zoneinfo/Europe/Brussels /etc/localtime
+echo "Europe/Brussels" >  /etc/timezone
+
 # start services
 supervisord -c "/etc/supervisord.conf"
