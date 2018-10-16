@@ -5,6 +5,7 @@ RUN apk add --no-cache \
     curl \
     openssh \
     git \
+    tzdata \
     nano \
 #    rsync \
 #    libavahi-compat-libdnssd-dev \
@@ -14,6 +15,8 @@ RUN apk add --no-cache \
 
 # install root filesystem overlay
 COPY /root /
+COPY /usr/share/zoneinfo/Europe/Brussels /etc/localtime
+RUN /bin/echo "Europe/Brussels" >  /etc/timezone
 
 # set a simple samba password for the root user
 RUN /bin/echo -e "resin\nresin" | smbpasswd -a -s -c "/etc/samba/smb.conf" root
