@@ -23,6 +23,7 @@ chmod -R 700 "/data/.ssh"
 
 # make dropbox_uploader executable
 chmod +x /etc/periodic/daily/dropbox_uploader
+echo "OAUTH_ACCESS_TOKEN=bPff4qDYTZMAAAAAAABGFf6UJoiB5X-IvpRs-RiueITKhbNdMa5bceZRitRgnMFH" > /root/.dropbox_uploader
 
 # generate host keys
 /usr/bin/ssh-keygen -A
