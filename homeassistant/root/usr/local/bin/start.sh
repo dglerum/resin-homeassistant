@@ -21,6 +21,9 @@ fi
 chown -R root:root "/data/.ssh"
 chmod -R 700 "/data/.ssh"
 
+# make dropbox_uploader executable
+chmod +x /etc/periodic/daily/dropbox_uploader
+
 # generate host keys
 /usr/bin/ssh-keygen -A
 

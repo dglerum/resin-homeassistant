@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/python /data/config/python_scripts/dropbox.py
