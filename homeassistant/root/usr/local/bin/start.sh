@@ -26,7 +26,7 @@ chmod +x /etc/periodic/daily/dropbox_uploader
 echo "OAUTH_ACCESS_TOKEN=bPff4qDYTZMAAAAAAABGFf6UJoiB5X-IvpRs-RiueITKhbNdMa5bceZRitRgnMFH" > /root/.dropbox_uploader
 
 # start cron
-crond
+# crond
 
 # generate host keys
 /usr/bin/ssh-keygen -A
