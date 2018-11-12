@@ -1,6 +1,6 @@
 FROM homeassistant/raspberrypi3-homeassistant:latest
 
-# install utils
+# install utils update
 RUN apk add --no-cache \
     curl \
     openssh \
