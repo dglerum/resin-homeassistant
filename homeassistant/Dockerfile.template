@@ -14,7 +14,7 @@ RUN apk add --no-cache \
     supervisor \
     gmp-dev \
     mpfr-dev \
-    mpc-dev
+    mpc1-dev
 
 # install root filesystem overlay
 COPY /root /
