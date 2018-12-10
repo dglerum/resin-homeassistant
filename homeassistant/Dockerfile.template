@@ -11,10 +11,10 @@ RUN apk add --no-cache \
     cython \
     samba \
     samba-common-tools \
-    supervisor \
-    gmp-dev \
-    mpfr-dev \
-    mpc1-dev
+    supervisor
+#    gmp-dev \
+#    mpfr-dev \
+#    mpc1-dev
 
 # install root filesystem overlay
 COPY /root /
