@@ -1,4 +1,4 @@
-FROM homeassistant/raspberrypi3-homeassistant:0.83.3
+FROM homeassistant/raspberrypi3-homeassistant:0.84.2
 
 # install utils update
 RUN apk add --no-cache \
