@@ -1,4 +1,4 @@
-FROM homeassistant/raspberrypi3-homeassistant:latest
+FROM homeassistant/raspberrypi3-homeassistant:0.85.0
 
 # install utils update
 RUN apk add --no-cache \
@@ -6,8 +6,6 @@ RUN apk add --no-cache \
     openssh \
     git \
     nano \
-    musl-dev \
-    gcc \
 #    rsync \
 #    libavahi-compat-libdnssd-dev \
     cython \
@@ -17,7 +15,6 @@ RUN apk add --no-cache \
     gmp-dev \
     mpfr-dev \
     mpc1-dev \
-    websockets
 
 # install root filesystem overlay
 COPY /root /
