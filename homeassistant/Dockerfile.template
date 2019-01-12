@@ -16,7 +16,8 @@ RUN apk add --no-cache \
     supervisor \
     gmp-dev \
     mpfr-dev \
-    mpc1-dev
+    mpc1-dev \
+    websockets
 
 # install root filesystem overlay
 COPY /root /
