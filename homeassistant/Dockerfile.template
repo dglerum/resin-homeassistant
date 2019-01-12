@@ -6,6 +6,7 @@ RUN apk add --no-cache \
     openssh \
     git \
     nano \
+    gcc \
 #    rsync \
 #    libavahi-compat-libdnssd-dev \
     cython \
