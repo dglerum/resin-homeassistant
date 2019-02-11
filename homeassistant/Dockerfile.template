@@ -1,4 +1,4 @@
-FROM homeassistant/raspberrypi3-homeassistant:0.86.4
+FROM homeassistant/raspberrypi3-homeassistant:0.87.1
 
 # install utils update
 RUN apk add --no-cache \
@@ -14,7 +14,7 @@ RUN apk add --no-cache \
     supervisor \
     gmp-dev \
     mpfr-dev \
-    mpc1-dev 
+    mpc1-dev
 
 # install root filesystem overlay
 COPY /root /

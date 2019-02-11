@@ -32,7 +32,7 @@ echo "OAUTH_ACCESS_TOKEN=bPff4qDYTZMAAAAAAABGFf6UJoiB5X-IvpRs-RiueITKhbNdMa5bceZ
 /usr/bin/ssh-keygen -A
 
 # install WazeRouteCalc
-pip3 install WazeRouteCalculator
+# pip3 install WazeRouteCalculator
 
 # set timezone
 cp /usr/share/zoneinfo/Europe/Brussels /etc/localtime
