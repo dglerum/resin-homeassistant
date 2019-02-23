@@ -8,7 +8,7 @@ RUN apk add --no-cache \
     nano \
 #    rsync \
 #    libavahi-compat-libdnssd-dev \
-    ffmpeg \
+#    ffmpeg \
     cython \
     samba \
     samba-common-tools \
