@@ -2,7 +2,7 @@ version: "2"
 
 volumes:
   homeassistant-data:
-  flicd-data:
+  # flicd-data:
 
 services:
   homeassistant:
@@ -19,12 +19,12 @@ services:
     network_mode: host
     volumes:
       - 'homeassistant-data:/data'
-
-  flicd:
-    build: ./flicd
-    privileged: true
-    expose:
-      - "5551"
-    network_mode: host
-    volumes:
-      - 'flicd-data:/data'
+  # 
+  # flicd:
+  #   build: ./flicd
+  #   privileged: true
+  #   expose:
+  #     - "5551"
+  #   network_mode: host
+  #   volumes:
+  #     - 'flicd-data:/data'
