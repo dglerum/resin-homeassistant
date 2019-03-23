@@ -19,7 +19,14 @@ services:
     network_mode: host
     volumes:
       - 'homeassistant-data:/data'
-  # 
+
+
+  nginx:
+    build: ./nginx
+    depends_on:
+      - homeassistant
+    ports:
+      - "80"
   # flicd:
   #   build: ./flicd
   #   privileged: true
